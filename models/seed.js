@@ -1,0 +1,22 @@
+module.exports = [
+    {species: "Tyrannosaurus Rex",
+     extinct: true,
+     location: "Africa",
+     lifeExpectancy: 38,
+    },
+    {species: "Dodo",
+     extinct: true,
+     location: "Europe",
+     lifeExpectancy: 69,
+    },
+    {species: "Blue Whale",
+     extinct: false,
+     location: "Europe",
+     lifeExpectancy: 66,
+    },
+    {species: "Giant Panda",
+     extinct: false,
+     location: "Africa",
+     lifeExpectancy: 34,
+    }
+]

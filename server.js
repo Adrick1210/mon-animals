@@ -8,18 +8,45 @@ const morgan = require("morgan");
 const methodOverride = require("method-override");
 const { PORT = 3030 } = process.env;
 const Animal = require("./models/animal.js");
+const seedData = require("./models/seed.js");
 
 // MIDDLE WARE
+app.use((req, res, next) => {
+  req.model = {
+    Animal,
+    seedData,
+  };
+  console.log("This is middle ware")
+  next();
+})
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use("/public", express.static("public"));
 
 // ROUTES
-// INDEX
+
+// TEST
 app.get("/", (req, res) => {
-  res.render("index.ejs");
+  res.send("Hello ANIMALS");
 });
+
+// Seed
+app.get("/animals/seed", async (req,res) => {
+  try {
+   // Delete all animals
+   await Animal.deleteMany({});
+   // seed animals 
+   const animals = await Animal.create(seedData);
+   // send animals
+   res.json(animals);
+  } catch (error){
+    console.log(error.message);
+    res.send("Theres a issue with the seeds")
+  }
+})
+// INDEX 
+
 // NEW
 
 // DESTROY
@@ -27,17 +54,10 @@ app.get("/", (req, res) => {
 // UPDATE
 
 // CREATE
-app.post("/", (req, res) => {
-  const body = req.body;
-  if (body.extinct === "on") {
-    body.extinct = true;
-  } else {
-    body.extinct = false;
-  }
-  
-});
+
 // EDIT
 
 // SHOW
+
 // LISTENER
-app.listen(PORT, () => console.log(`Listening to the sound of ${PORT}`));
+app.listen(PORT, () => console.log(`Listening to the sounds of the port ${PORT}`));

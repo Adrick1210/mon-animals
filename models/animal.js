@@ -1,4 +1,4 @@
-// DEPENDECIES
+// DEPENDENCIES
 const mongoose = require("mongoose");
 
 // SCHEMA

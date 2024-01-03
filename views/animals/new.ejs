@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("../partials/head.ejs") %>
+<body>
+    <%- include("../partials/header.ejs") %>
+    <div class="container">
+        <form action="/animals" method="post">
+            <h1>Add New Animal</h1>
+            <label>Species: <input type="text" name="species"></label>
+            <label>Extinct? <input type="checkbox" name="extinct"></label>
+            <label>Location: <input type="text" name="location"></label>
+            <label>Life Expectancy: <input type="number" name="lifeExpectancy"></label>
+            <button class="btn btn-success">Add Animal</button>
+        </form>
+        <a href="/animals" class="btn btn-primary" role="button"
+            >Back to Main</a>
+    </div>
+</body>
+</html>

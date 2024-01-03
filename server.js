@@ -58,6 +58,9 @@ app.get("/animals", async (req, res) => {
 });
 
 // NEW
+app.get("/animals/new", (req,res) => {
+  res.render("animals/new.ejs");
+})
 
 // DESTROY
 

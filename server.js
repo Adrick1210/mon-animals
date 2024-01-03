@@ -16,9 +16,9 @@ app.use((req, res, next) => {
     Animal,
     seedData,
   };
-  console.log("This is middle ware")
+  console.log("This is middle ware");
   next();
-})
+});
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
@@ -32,30 +32,30 @@ app.get("/", (req, res) => {
 });
 
 // Seed
-app.get("/animals/seed", async (req,res) => {
+app.get("/animals/seed", async (req, res) => {
   try {
-   // Delete all animals
-   await Animal.deleteMany({});
-   // seed animals 
-   const animals = await Animal.create(seedData);
-   // send animals
-   res.json(animals);
-  } catch (error){
+    // Delete all animals
+    await Animal.deleteMany({});
+    // seed animals
+    const animals = await Animal.create(seedData);
+    // send animals
+    res.json(animals);
+  } catch (error) {
     console.log(error.message);
-    res.send("Theres a issue with the seeds")
+    res.send("Theres a issue with the seeds");
   }
-})
+});
 
-// INDEX 
-app.get("/animals", async (req,res) => {
+// INDEX
+app.get("/animals", async (req, res) => {
   try {
-  const animals = await Animal.find({});
-  res.render("animals/index.ejs", { animals });
-  } catch (error){
+    const animals = await Animal.find({});
+    res.render("animals/index.ejs", { animals });
+  } catch (error) {
     console.log(error.message);
-    res.send("Theres a issue with the seeds")
+    res.send("Theres a issue with the seeds");
   }
-})
+});
 
 // NEW
 
@@ -68,6 +68,18 @@ app.get("/animals", async (req,res) => {
 // EDIT
 
 // SHOW
+app.get("/animals/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const animal = await Animal.findById(id);
+    res.render("animals/show.ejs", { animal });
+  } catch (error) {
+    console.log(error.message);
+    res.send("Theres a issue with the seeds");
+  }
+});
 
 // LISTENER
-app.listen(PORT, () => console.log(`Listening to the sounds of the port ${PORT}`));
+app.listen(PORT, () =>
+  console.log(`Listening to the sounds of the port ${PORT}`)
+);

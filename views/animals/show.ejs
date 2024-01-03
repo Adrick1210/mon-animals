@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../partials/head.ejs") %>
+  <body>
+    <%- include("../partials/header.ejs") %>
+    <main>
+      <div class="container">
+        
+          <h2>
+            <%= animal.species %> - <%= animal.extinct ? "Not Around" : "Still Around" %>
+          </h2>
+          <h3><%= animal.location %></h3>
+          <h3><%= animal.lifeExpectancy %></h3>
+          <a href="/animals/edit" class="btn btn-warning" role="button">Edit</a>
+          <form
+            action="/animals/<%= animal._id %>?_method=DELETE"
+            method="post"
+          >
+            <button type="button" class="btn btn-danger">Delete</button>
+          </form>
+          <a href="/animals" class="btn btn-primary" role="button"
+            >Back to Main</a>
+        
+      </div>
+    </main>
+  </body>
+</html>

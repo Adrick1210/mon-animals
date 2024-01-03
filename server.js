@@ -53,22 +53,32 @@ app.get("/animals", async (req, res) => {
     res.render("animals/index.ejs", { animals });
   } catch (error) {
     console.log(error.message);
-    res.send("Theres a issue with the seeds");
+    res.send("Theres a issue with the index");
   }
 });
 
 // NEW
-app.get("/animals/new", (req,res) => {
+app.get("/animals/new", (req, res) => {
   res.render("animals/new.ejs");
-})
+});
 
-// DESTROY
+// CREATE
+app.post("/animals", async (req, res) => {
+  try {
+    req.body.extinct = req.body.extinct === "on" ? true : false;
+    await Animal.create(req.body);
+    res.redirect("/animals");
+  } catch (error) {
+    console.log(error.message);
+    res.send("Theres a issue with the creation");
+  }
+});
+
+// EDIT
 
 // UPDATE
 
-// CREATE
-
-// EDIT
+// DESTROY
 
 // SHOW
 app.get("/animals/:id", async (req, res) => {
@@ -78,7 +88,7 @@ app.get("/animals/:id", async (req, res) => {
     res.render("animals/show.ejs", { animal });
   } catch (error) {
     console.log(error.message);
-    res.send("Theres a issue with the seeds");
+    res.send("Theres a issue with the show");
   }
 });
 

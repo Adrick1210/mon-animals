@@ -45,7 +45,17 @@ app.get("/animals/seed", async (req,res) => {
     res.send("Theres a issue with the seeds")
   }
 })
+
 // INDEX 
+app.get("/animals", async (req,res) => {
+  try {
+  const animals = await Animal.find({});
+  res.render("animals/index.ejs", { animals });
+  } catch (error){
+    console.log(error.message);
+    res.send("Theres a issue with the seeds")
+  }
+})
 
 // NEW
 

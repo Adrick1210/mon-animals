@@ -8,7 +8,6 @@ const morgan = require("morgan");
 const methodOverride = require("method-override");
 const { PORT = 3030 } = process.env;
 const AnimalController = require("./controllers/animal.js");
-const seedData = require("./models/seed.js");
 
 // MIDDLE WARE
 app.use(morgan("dev"));

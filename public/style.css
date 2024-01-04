@@ -31,6 +31,8 @@ header h1 {
   text-align: center;
   font-size: 5rem;
   margin-top: 30px;
+  color: dodgerblue;
+  text-shadow: black 4px 0 10px;
 }
 
 form {

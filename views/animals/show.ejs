@@ -5,21 +5,30 @@
     <%- include("../partials/header.ejs") %>
     <main>
       <div class="container">
-        <h2>
-          <%= animal.species %> - <%= animal.extinct ? "Not Around" : "Still Around" %>
-        </h2>
-        <h3><%= animal.location %></h3>
-        <h3><%= animal.lifeExpectancy %></h3>
-        <a
-          href="/animals/<%=animal._id%>/edit"
-          class="btn btn-warning"
-          role="button"
-          >Edit</a>
-        <form action="/animals/<%= animal._id %>?_method=DELETE" method="post">
-          <button type="button" class="btn btn-danger">Delete</button>
-        </form>
+        <h1><%= animal.species %></h1>
+        <label for="extinct">Extinct?<h2><%= animal.extinct ? "Not Around" : "Still Around" %></h2></label>
+        <label for="location">Location:<h3><%= animal.location %></h3></label>
+        <label for="lifeExpectancy">Life Expectancy:<h3><%= animal.lifeExpectancy %></h3></label>
+        <div class="btn-container">
+          <a
+            href="/animals/<%=animal._id%>/edit"
+            class="btn btn-warning"
+            role="button"
+            >Edit</a
+          >
+          <form
+            action="/animals/<%= animal._id %>?_method=DELETE"
+            method="post"
+            class="delete"
+          >
+            <button type="button" class="btn btn-danger">Delete</button>
+          </form>
+        </div>
+      </div>
+      <div class="btn-main">
         <a href="/animals" class="btn btn-primary" role="button"
-          >Back to Main</a>
+          >Back to Main</a
+        >
       </div>
     </main>
   </body>

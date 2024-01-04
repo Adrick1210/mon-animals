@@ -3,11 +3,15 @@
   <%- include("../partials/head.ejs") %>
   <body>
     <%- include("../partials/header.ejs") %>
-    <a href="/animals/new" class="btn btn-primary" role="button">Add Animal</a>
+    <div class="btn-add">
+      <a href="/animals/new" class="btn btn-primary" role="button"
+        >Add Animal</a
+      >
+    </div>
     <main>
-      <div>
+      <div class="main-container">
         <% for (let animal of animals) { %>
-        <div class="container">
+        <div class="list-container">
           <a href="/animals/<%= animal._id %>">
             <h2>
               <%= animal.species %> - <%= animal.extinct ? "Not Around" : "Still Around" %>

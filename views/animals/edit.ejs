@@ -13,8 +13,11 @@
         <label>Extinct? <input type="checkbox" name="extinct" /></label>
         <label
           >Location:
-          <input type="text" name="location" placeholder="<%= animal.location %>" /></label
-        >
+          <input
+            type="text"
+            name="location"
+            placeholder="<%= animal.location %>"
+        /></label>
         <label
           >Life Expectancy:
           <input
@@ -22,9 +25,15 @@
             name="lifeExpectancy"
             placeholder="<%= animal.lifeExpectancy %>"
         /></label>
+        <div class="btn-container">
         <button class="btn btn-success">Update <%= animal.species %></button>
+      </div>
       </form>
-      <a href="/animals" class="btn btn-primary" role="button">Back to Main</a>
+      <div class="btn-main">
+        <a href="/animals" class="btn btn-primary" role="button"
+          >Back to Main</a
+        >
+      </div>
     </div>
   </body>
 </html>

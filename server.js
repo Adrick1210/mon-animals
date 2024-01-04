@@ -87,6 +87,17 @@ app.get("/animals/:id/edit", async (req, res) => {
 });
 
 // UPDATE
+app.put("/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    req.body.extinct = req.body.extinct === "on" ? true : false;
+    await Animal.findByIdAndUpdate(id, req.body);
+    res.redirect(`/animals/${id}`);
+  } catch (error) {
+    console.log(error.message);
+    res.send("Theres a issue with the update");
+  }
+});
 
 // DESTROY
 

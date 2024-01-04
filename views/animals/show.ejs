@@ -6,9 +6,9 @@
     <main>
       <div class="container">
         <h1><%= animal.species %></h1>
-        <label for="extinct">Extinct?<h2><%= animal.extinct ? "Not Around" : "Still Around" %></h2></label>
+        <label for="extinct">Is it extinct?<h2><%= animal.extinct ? "Not Around" : "Still Around" %></h2></label>
         <label for="location">Location:<h3><%= animal.location %></h3></label>
-        <label for="lifeExpectancy">Life Expectancy:<h3><%= animal.lifeExpectancy %></h3></label>
+        <label for="lifeExpectancy">Life Expectancy:<h3><%= animal.lifeExpectancy %> Years</h3></label>
         <div class="btn-container">
           <a
             href="/animals/<%=animal._id%>/edit"
@@ -17,11 +17,10 @@
             >Edit</a
           >
           <form
+            class="delete" 
             action="/animals/<%= animal._id %>?_method=DELETE"
-            method="post"
-            class="delete"
-          >
-            <button type="button" class="btn btn-danger">Delete</button>
+            method="post">
+            <button class="btn btn-danger">Delete</button>
           </form>
         </div>
       </div>

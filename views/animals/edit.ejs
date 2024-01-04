@@ -8,7 +8,11 @@
         <h1>Edit <%= animal.species %></h1>
         <label
           >Species:
-          <input type="text" name="species" placeholder="<%= animal.species %>"
+          <input
+            type="text"
+            name="species"
+            placeholder="<%= animal.species %>"
+            value="<%= animal.species %>"
         /></label>
         <label>Extinct? <input type="checkbox" name="extinct" /></label>
         <label
@@ -17,6 +21,7 @@
             type="text"
             name="location"
             placeholder="<%= animal.location %>"
+            value="<%= animal.location %>"
         /></label>
         <label
           >Life Expectancy:
@@ -24,16 +29,15 @@
             type="number"
             name="lifeExpectancy"
             placeholder="<%= animal.lifeExpectancy %>"
+            value="<%= animal.lifeExpectancy %>"
         /></label>
         <div class="btn-container">
-        <button class="btn btn-success">Update <%= animal.species %></button>
-      </div>
+          <button class="btn btn-success">Update <%= animal.species %></button>
+        </div>
       </form>
-      <div class="btn-main">
-        <a href="/animals" class="btn btn-primary" role="button"
-          >Back to Main</a
-        >
-      </div>
+    </div>
+    <div class="btn-main">
+      <a href="/animals" class="btn btn-primary" role="button">Back to Main</a>
     </div>
   </body>
 </html>

@@ -11,14 +11,6 @@ const Animal = require("./models/animal.js");
 const seedData = require("./models/seed.js");
 
 // MIDDLE WARE
-app.use((req, res, next) => {
-  req.model = {
-    Animal,
-    seedData,
-  };
-  console.log("This is middle ware");
-  next();
-});
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
@@ -100,6 +92,15 @@ app.put("/animals/:id", async (req, res) => {
 });
 
 // DESTROY
+app.delete("/animals/:id", async (req, res) => {
+  try {
+    await Animal.findByIdAndDelete(req.params.id);
+    res.redirect("/animals");
+  } catch (error) {
+    console.log(error.message);
+    res.send("Theres a issue with the destroy");
+  }
+});
 
 // SHOW
 app.get("/animals/:id", async (req, res) => {

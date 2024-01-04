@@ -75,6 +75,16 @@ app.post("/animals", async (req, res) => {
 });
 
 // EDIT
+app.get("/animals/:id/edit", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const animal = await Animal.findById(id);
+    res.render("animals/edit.ejs", { animal });
+  } catch (error) {
+    console.log(error.message);
+    res.send("Theres a issue with the edit");
+  }
+});
 
 // UPDATE
 

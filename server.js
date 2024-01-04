@@ -87,7 +87,7 @@ app.get("/animals/:id/edit", async (req, res) => {
 });
 
 // UPDATE
-app.put("/:id", async (req, res) => {
+app.put("/animals/:id", async (req, res) => {
   try {
     const id = req.params.id;
     req.body.extinct = req.body.extinct === "on" ? true : false;

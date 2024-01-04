@@ -4,7 +4,7 @@
   <body>
     <%- include("../partials/header.ejs") %>
     <div class="container">
-      <form action="/animals" method="post">
+      <form action="/animals/<%= animal._id %>?_method=PUT" method="post">
         <h1>Edit <%= animal.species %></h1>
         <label
           >Species:
